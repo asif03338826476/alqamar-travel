@@ -31,9 +31,6 @@ export const Navbar = (props: Props) => {
           <a href="#guide">Our Guides</a>{" "}
         </li>
         <li className="mx-4 my-3 lg:my-0  py-1 px-4 rounded-xl hover:bg-secondary hover:text-white cursor-pointer transition-all">
-          <a href="#footer"></a> About us
-        </li>
-        <li className="mx-4 my-3 lg:my-0  py-1 px-4 rounded-xl hover:bg-secondary hover:text-white cursor-pointer transition-all">
           <a href="#form">Contact Us</a>
         </li>
       </ul>
