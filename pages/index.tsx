@@ -21,8 +21,8 @@ import { Footer } from "../components/Footer";
 import { ToTop } from "../components/ToTop";
 import { useInView } from "react-intersection-observer";
 import { Alert, AlertTitle } from "@mui/material";
-import { useState } from "react";
-// import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const Home: NextPage = () => {
   const pakDesc =
@@ -62,36 +62,27 @@ const Home: NextPage = () => {
     triggerOnce: true,
   });
 
-  const submitFunc = (e: any) => {
-    e.preventDefault();
-    setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 10000);
-  };
-
-  {
-    /*
   const form = useRef<any>();
   const [isSending, setIsSending] = useState<boolean>(false);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
-        "service_255ohwc",
-        "template_ebct2us",
+        "service_yeflbaf",
+        "template_x0tip34",
         form.current,
-        "YAyXiAdTQLiLxDSxM"
+        "o5hUqyTCka6zm0MQU"
       )
       .then(
-        (result) => {
+        (result: any) => {
           setIsSending(true);
+          setShowAlert(true);
           setTimeout(() => {
-            alert("Submited Successfully ! See you soon");
             window.location.reload();
           }, 2000);
         },
-        (error) => {
+        (error: any) => {
           console.log(error.text);
           alert("Something went wrong");
         }
@@ -99,10 +90,6 @@ const Home: NextPage = () => {
     setIsSending(false);
   };
 
-
-
-*/
-  }
   return (
     <div>
       <Head>
@@ -223,11 +210,14 @@ const Home: NextPage = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center md:flex-row flex-col mt-20 mb-10 mx-10">
+        <div
+          ref={heading2.ref}
+          className="flex justify-center md:flex-row flex-col mt-20 mb-10 mx-10"
+        >
           <form
             id="form"
-            onSubmit={(e) => submitFunc(e)}
-            ref={heading2.ref}
+            onSubmit={(e) => sendEmail(e)}
+            ref={form}
             className={`flex flex-col items-start min-w-[300px] transition-all duration-[1500ms] ${
               heading2.inView ? "opacity-100" : "opacity-0"
             }`}
@@ -245,18 +235,24 @@ const Home: NextPage = () => {
             <input
               required
               type="text"
+              id="name"
+              name="name"
               placeholder="Name"
               className="px-4 py-2 transition-all  text-black shadow-md w-full rounded-2xl placeholder:italic focus:outline-none border-2 border-transparent hover:border-primary focus:border-primary bg-stone-100 my-4 mt-10"
             />
             <input
               required
               type="date"
+              id="date"
+              name="date"
               placeholder="Preferred date"
               className="px-4 py-2 transition-all  text-black shadow-md w-full rounded-2xl placeholder:italic focus:outline-none border-2 border-transparent hover:border-primary focus:border-primary bg-stone-100 my-4 "
             />
             <input
               required
               type="email"
+              id="email"
+              name="email"
               placeholder="Email"
               className="px-4 py-2 transition-all  text-black shadow-md w-full rounded-2xl placeholder:italic focus:outline-none border-2 border-transparent hover:border-primary focus:border-primary bg-stone-100 my-4"
             />
